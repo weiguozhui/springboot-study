@@ -1,0 +1,12 @@
+spring-boot的启动方式
+/**
+ * 1.直接运行main方法就可以启动springboot项目
+ * 2.java -jar 命令启动
+ * 3.mvn命令启动 mvn spring-boot:run
+ */
+
+ springboot的mvc注解
+ springboot的mvc遵循rest接口协议，原先controller注解使用restController代替
+ 可继续使用@RequestMapping作为映射，推荐使用
+ 查询：@GetMapping
+ 其他的后续慢慢补上
