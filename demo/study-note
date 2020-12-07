@@ -21,6 +21,7 @@ spring-boot的启动方式
 
 
  springboot的mvc注解
+ @SpringBootApplication 定义该类为启动类
  springboot的mvc遵循rest接口协议，原先controller注解使用restController代替
  可继续使用@RequestMapping作为映射，推荐使用
  查询：@GetMapping
