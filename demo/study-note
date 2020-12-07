@@ -34,6 +34,11 @@ spring-boot的启动方式
      可以不指定name属性，则根据类型注入，指定name属性，可以使用@resource注解指定获取指定的name，name属性相当于xml配置的bean的id
      @Bean(name = "userBean")
 
+spring的配置文件
+    配置文件在src/main/resources/application.properties
+    可支持yaml文件格式，推荐使用yaml文件格式。
+    在配置文件中可以自定义和修改各种参数，如tomcat端口号，项目路径等
+
   lombok插件的使用
   使用lombok插件，可以使用注解方式，实现对javabean的封装
   直接在pom文件中引入lombok的依赖包，然后使用注解即可
