@@ -25,3 +25,23 @@ spring-boot的启动方式
  可继续使用@RequestMapping作为映射，推荐使用
  查询：@GetMapping
  其他的后续慢慢补上
+
+ @configuration和@Bean的使用
+     使用@configuration定义这个类为配置类,相当于以前的xml文件配置，定义该类为配置类
+     相对于以前的xml的bean装配，将对象放到springboot的容器中，这样做的好处个人认为是更加的面向对象了
+     可以不指定name属性，则根据类型注入，指定name属性，可以使用@resource注解指定获取指定的name，name属性相当于xml配置的bean的id
+     @Bean(name = "userBean")
+
+  lombok插件的使用
+  使用lombok插件，可以使用注解方式，实现对javabean的封装
+  直接在pom文件中引入lombok的依赖包，然后使用注解即可
+    // getter 方法
+    @Getter
+    // setter 方法
+    @Setter
+    // 所有参数构造
+    @AllArgsConstructor
+    // 重写equals和hashcode
+    @EqualsAndHashCode
+    // 无参构造方法
+    @NoArgsConstructor
