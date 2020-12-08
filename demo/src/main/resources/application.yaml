@@ -1,0 +1,9 @@
+server:
+  #端口
+  port: 8082
+  servlet:
+    #项目路径
+    context-path: /spring-dome
+spring:
+  profiles:
+    active: env

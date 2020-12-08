@@ -38,6 +38,23 @@ spring的配置文件
     配置文件在src/main/resources/application.properties
     可支持yaml文件格式，推荐使用yaml文件格式。
     在配置文件中可以自定义和修改各种参数，如tomcat端口号，项目路径等
+spring boot多环境配置
+    spring boot 启动时默认只会去加载application.xml文件
+    可以配置多个配置文件方法：
+    1.在application.yaml中添加配置项
+    spring:
+      profiles:
+        active: env---env即为其他配置文件的后缀
+    创建其他配置环境的配置文件
+    application-env.yaml--开发环境
+    application-test.yaml--测试环境
+    Spring boot 运行时，默认加载的是application.yaml
+    启动时它就会加载env的配置文件。
+    使用maven命令启动和jar启动时都可以指定配置文件
+    maven 启动：
+    mvn spring-boot:run --spring.profiles.active='test'
+    jar启动方法
+    jar -jar xxx.jar --spring.profiles.active='test'
 
   lombok插件的使用
   使用lombok插件，可以使用注解方式，实现对javabean的封装
@@ -52,3 +69,4 @@ spring的配置文件
     @EqualsAndHashCode
     // 无参构造方法
     @NoArgsConstructor
+
