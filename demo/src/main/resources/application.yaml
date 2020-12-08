@@ -7,3 +7,9 @@ server:
 spring:
   profiles:
     active: env
+#自定义配置项
+myproperties:
+  aaa: aaa
+  bbb: bbb
+  ccc: ccc
+  ddd: ddd

@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.dao.LomBokDao;
 import com.example.demo.dao.User;
+import com.example.demo.properties.MyProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,9 @@ public class TestController {
     @Autowired
     LomBokDao lomBokDao;
 
+    @Autowired
+    MyProperties properties;
+
     // 查询数据接口遵循rest规范，使用getMapping注解
     @GetMapping("/hello")
     public String testHello(){
@@ -38,6 +42,11 @@ public class TestController {
     @GetMapping("/getlombok")
     public LomBokDao getLomBokDao(){
         return lomBokDao;
+    }
+
+    @GetMapping("/getProperties")
+    public MyProperties getProperties(){
+        return properties;
     }
 
 }

@@ -53,8 +53,26 @@ spring boot多环境配置
     使用maven命令启动和jar启动时都可以指定配置文件
     maven 启动：
     mvn spring-boot:run --spring.profiles.active='test'
-    jar启动方法
+    jar启动方法（得把jar包单独拿出来运行，不然还是读的默认文件）
     jar -jar xxx.jar --spring.profiles.active='test'
+
+    引入自定义配置项
+
+    在application.yaml中添加了自定义配置项
+    myproperties:
+      aaa: aaa
+      bbb: bbb
+      ccc: ccc
+      ddd: ddd
+    定义一个类来接收此配置com.example.demo.properties.MyProperties
+    并定义其对应的配置项作为属性。
+
+    使用注解自定义配置项映射类，并使用prefix属性来匹配配置的父节点。
+    @ConfigurationProperties(prefix = "myproperties")
+    使用@Component注入到springboot容器中
+    调用时直接使用用自动注入或类名注入即可
+    自动注入位置 com.example.demo.controller.TestController.properties
+    调用位置com.example.demo.controller.TestController.getProperties
 
   lombok插件的使用
   使用lombok插件，可以使用注解方式，实现对javabean的封装

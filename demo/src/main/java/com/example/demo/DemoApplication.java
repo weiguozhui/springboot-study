@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  * 2.java -jar 命令启动
  * 3.mvn命令启动 mvn spring-boot:run
  */
+// 定义该类为启动类
 @SpringBootApplication
 public class DemoApplication {
 
