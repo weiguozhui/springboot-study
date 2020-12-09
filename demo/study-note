@@ -137,6 +137,17 @@ springboot的其他依赖
         </dependency>
     编写mybaties的配置文件
 
+idea自动生成实体类
+idea-右边栏maven下面的database-datasource-mysql
+如果连接失败，则需要下载驱动
+然后重连即可
+且idea的database还可以当mysql的客户端使用，再也不用去下什么客户端啦。真好！
+idea真是太强大了！
+选择已连接上的库-右键-open query console就可以打开客户端啦！
+创建实体类
+选择表，右键Scripted extension-generate POJOS.groovy
+选择实体类的存放位置即可
+自动生成的实体类包名可能不正确，需要手动修改
 
 
 
