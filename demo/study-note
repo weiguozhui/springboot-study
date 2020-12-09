@@ -99,6 +99,18 @@ springboot的其他依赖
 		<artifactId>spring-boot-configuration-processor</artifactId>
 	</dependency>
 
+    热加载依赖包
+    pom文件中添加热加载依赖，并开启热加载
+    <!-- 热加载依赖包-->
+     <dependency>
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-devtools</artifactId>
+         <!-- 设置为true，开启热加载 -->
+         <optional>true</optional>
+     </dependency>
+    在idea的file-setting-build-compilers-勾选build-project-automatically即可，
+    在修改了内容之后，需要重新build project即可以加载修改的内容。
+
 
 
 

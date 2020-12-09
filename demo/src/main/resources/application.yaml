@@ -9,7 +9,7 @@ spring:
     active: env
 #自定义配置项
 myproperties:
-  aaa: aaa
+  aaa: a
   bbb: bbb
   ccc: ccc
   ddd: ddd
