@@ -2,14 +2,16 @@ package com.example.demo.controller;
 
 import com.example.demo.dao.LomBokDao;
 import com.example.demo.dao.User;
+import com.example.demo.dao.UserInfo;
 import com.example.demo.properties.MyProperties;
+import com.example.demo.service.IUserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 // 因为springboot的web项目是基于rest规范的，所以使用restController注解
 @RestController
@@ -25,6 +27,9 @@ public class TestController {
 
     @Autowired
     MyProperties properties;
+
+    @Autowired
+    IUserInfoService userInfoService;
 
     // 查询数据接口遵循rest规范，使用getMapping注解
     @GetMapping("/hello")
@@ -47,6 +52,11 @@ public class TestController {
     @GetMapping("/getProperties")
     public MyProperties getProperties(){
         return properties;
+    }
+
+    @GetMapping("/getUserInfoList")
+    public List<UserInfo> getUserInfoList(){
+        return userInfoService.selectUserInfoList() ;
     }
 
 }

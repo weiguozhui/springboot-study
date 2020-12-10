@@ -6,10 +6,26 @@ server:
     context-path: /spring-dome
 spring:
   profiles:
-    active: env
+    active:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 注意是uernmae和password，不是DataSource-的方式
+    username: root
+    password: admin
+    # mysql 8.0的驱动要加上时区serverTimezone=UTC，中国时区
+    url:  jdbc:mysql://localhost:3306/billdata?serverTimezone=UTC
+    #连接池配置
+    type: com.alibaba.druid.pool.DruidDataSource
 #自定义配置项
 myproperties:
   aaa: a
   bbb: bbb
   ccc: ccc
   ddd: ddd
+
+mybatis:
+  #映射文件路径
+  mapper-locations: classpath:mybaties/*.xml
+  configuration:
+    # 开启驼峰映射
+    map-underscore-to-camel-case: true
