@@ -165,8 +165,28 @@ idea自动生成实体类
     自动生成的实体类包名可能不正确，需要手动修改
 
 
+分页助手整合
+1.引入依赖
+<dependency>
+    <groupId>com.github.pagehelper</groupId>
+    <artifactId>pagehelper-spring-boot-starter</artifactId>
+    <version>1.2.12</version>
+</dependency>
 
+// 定义分页信息
+        PageHelper.startPage(1,1);
+        // 调用sql
+        List<Userinfo2> userinfo2s= userInfo2Mapper.getUserInfo2List();
+        // 将结果集放置到pageInfo对象中
+        PageInfo<Userinfo2> pageInfo =  new PageInfo<>(userinfo2s);
+        // 遍历结果
+        for (Userinfo2 userInfo: pageInfo.getList()
+             ) {
+            System.out.println(userinfo2s);
 
+        }
+分页助手会自动添加查询数量的语句和分页信息，实际上是先查数量，再查分页。
+使用分页助手的好处是实现分页的面向对象编程，不用功每一句sql都加分页信息，减少代码量
 
 
 
