@@ -145,6 +145,11 @@ springboot的其他依赖
      在启动类中添加注解扫描映射接口
      @MapperScan(basePackages = "com.example.demo.mapper")
 
+    注解方式整合mybaties
+    唯一区别就是不用配置xml的配置路径
+    直接在mapper接口的方法上添加mybaties提供的注解进行开发，如
+    com.example.demo.mapper.IUserInfo2Mapper.getUserInfo2List
+
 
 
 idea自动生成实体类
