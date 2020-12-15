@@ -6,12 +6,15 @@ spring-boot的启动方式
  */
 目录结构
 项目名称
+    .gitingore  配置忽略的不提交到git的文件
     src
         main
             java
                 package
             resource
                 配置文件
+            staic---静态资源文件，js文件，html
+            templates--前端框架页面-freemaker等
         test
             java
                 package
@@ -189,6 +192,15 @@ idea自动生成实体类
 使用分页助手的好处是实现分页的面向对象编程，不用功每一句sql都加分页信息，减少代码量
 
 
+springboot整合jsp页面
+    默认springboot 不整合jsp页面，需要手动引入并配置
+    1.导入jsp依赖引擎
+    2.创建目录
+    src
+        webapp
+            WEB-INF
+    3.指定view前缀
+----整不成功，后面再看，不能卡死在这里，卡很久了
 
 
 
