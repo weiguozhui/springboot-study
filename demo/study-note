@@ -72,10 +72,64 @@ spring boot多环境配置
 
     使用注解自定义配置项映射类，并使用prefix属性来匹配配置的父节点。
     @ConfigurationProperties(prefix = "myproperties")
+    其中prefix指的全局配置文件节点名称即yaml文件中的父节点
     使用@Component注入到springboot容器中
     调用时直接使用用自动注入或类名注入即可
     自动注入位置 com.example.demo.controller.TestController.properties
     调用位置com.example.demo.controller.TestController.getProperties
+
+    @vaule可以代替@ConfigurationProperties来获取配置值。
+    需要在属性上直接设置字段值，也可以使用表达式取配置文件的值
+     设置值
+     @Value("aaa")
+     @Value("true")
+     @Value("${myproperties.bbb}")
+
+    @ConfigurationProperties与@Value的区别
+    自动批量注入                  一个属性一个属性的写
+    支持松散语法，即驼峰命名        不支持
+    不支持SPEL语法                支持SPEL语法，即#{2*3}运算，结果可直接赋值给int类型
+    支持jsr303数据校验，如@Email    不支持数据校验
+
+    jsr303数据校验需要学习一下。==================
+    即数据规范校验
+    空检查
+    @Null 验证对象是否为null
+    @NotNull 验证对象是否不为null, 无法查检长度为0的字符串
+    @NotBlank 检查约束字符串是不是Null还有被Trim的长度是否大于0,只对字符串,且会去掉前后空格.
+    @NotEmpty 检查约束元素是否为NULL或者是EMPTY.
+
+    Booelan检查
+    @AssertTrue 验证 Boolean 对象是否为 true
+    @AssertFalse 验证 Boolean 对象是否为 false
+
+    长度检查
+    @Size(min=, max=) 验证对象（Array,Collection,Map,String）长度是否在给定的范围之内
+    @Length(min=, max=) Validates that the annotated string is between min and max included.
+
+    日期检查
+    @Past 验证 Date 和 Calendar 对象是否在当前时间之前，验证成立的话被注释的元素一定是一个过去的日期
+    @Future 验证 Date 和 Calendar 对象是否在当前时间之后 ，验证成立的话被注释的元素一定是一个将来的日期
+    @Pattern 验证 String 对象是否符合正则表达式的规则，被注释的元素符合制定的正则表达式，regexp:正则表达式 flags: 指定 Pattern.Flag 的数组，表示正则表达式的相关选项。
+
+    数值检查
+    建议使用在Stirng,Integer类型，不建议使用在int类型上，因为表单值为“”时无法转换为int，但可以转换为Stirng为”“,Integer为null
+    @Min 验证 Number 和 String 对象是否大等于指定的值
+    @Max 验证 Number 和 String 对象是否小等于指定的值
+    @DecimalMax 被标注的值必须不大于约束中指定的最大值. 这个约束的参数是一个通过BigDecimal定义的最大值的字符串表示.小数存在精度
+    @DecimalMin 被标注的值必须不小于约束中指定的最小值. 这个约束的参数是一个通过BigDecimal定义的最小值的字符串表示.小数存在精度
+    @Digits 验证 Number 和 String 的构成是否合法
+    @Digits(integer=,fraction=) 验证字符串是否是符合指定格式的数字，interger指定整数精度，fraction指定小数精度。
+    @Range(min=, max=) 被指定的元素必须在合适的范围内
+    @Range(min=10000,max=50000,message=”range.bean.wage”)
+    @Valid 递归的对关联对象进行校验, 如果关联对象是个集合或者数组,那么对其中的元素进行递归校验,如果是一个map,则对其中的值部分进行校验.(是否进行递归验证)
+    @CreditCardNumber信用卡验证
+    @Email 验证是否是邮件地址，如果为null,不进行验证，算通过验证。
+    @ScriptAssert(lang= ,script=, alias=)
+    @URL(protocol=,host=, port=,regexp=, flags=)
+    校验不过会抛出异常
+    可以通过捕获异常来获取到错误信息
+
 
   lombok插件的使用
   使用lombok插件，可以使用注解方式，实现对javabean的封装
@@ -201,6 +255,10 @@ springboot整合jsp页面
             WEB-INF
     3.指定view前缀
 ----整不成功，后面再看，不能卡死在这里，卡很久了
+
+关于微服务
+    将功能打散，一个功能或相关的功能作为一个服务单独部署。
+    解耦
 
 
 

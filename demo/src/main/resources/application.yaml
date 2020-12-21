@@ -22,6 +22,9 @@ myproperties:
   bbb: bbb
   ccc: ccc
   ddd: ddd
+  age: 29
+  flag: true
+  email: xxx
 
 mybatis:
   #映射文件路径
