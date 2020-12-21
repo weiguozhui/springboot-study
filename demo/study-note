@@ -84,6 +84,7 @@ spring boot多环境配置
      @Value("aaa")
      @Value("true")
      @Value("${myproperties.bbb}")
+     例子见com.example.demo.properties.ValueProperties
 
     @ConfigurationProperties与@Value的区别
     自动批量注入                  一个属性一个属性的写
@@ -259,6 +260,8 @@ springboot整合jsp页面
 关于微服务
     将功能打散，一个功能或相关的功能作为一个服务单独部署。
     解耦
+
+
 
 
 

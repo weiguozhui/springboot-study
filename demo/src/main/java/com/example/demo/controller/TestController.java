@@ -4,14 +4,12 @@ import com.example.demo.dao.LomBokDao;
 import com.example.demo.dao.User;
 import com.example.demo.dao.UserInfo;
 import com.example.demo.properties.MyProperties;
+import com.example.demo.properties.ValueProperties;
 import com.example.demo.service.IUserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -34,6 +32,9 @@ public class TestController {
     @Autowired
     IUserInfoService userInfoService;
 
+    @Autowired
+    ValueProperties valueProperties;
+
     // 查询数据接口遵循rest规范，使用getMapping注解
     @GetMapping("/hello")
     public String testHello(){
@@ -55,6 +56,11 @@ public class TestController {
     @GetMapping("/getProperties")
     public MyProperties getProperties(){
         return properties;
+    }
+
+    @GetMapping("/getValueProperties")
+    public ValueProperties getValueProperties(){
+        return valueProperties;
     }
 
     @GetMapping("/getUserInfoList")

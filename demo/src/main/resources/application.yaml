@@ -25,6 +25,10 @@ myproperties:
   age: 29
   flag: true
   email: xxx
+valueProperties:
+  name: weiguozhui
+  age:
+  flag:
 
 mybatis:
   #映射文件路径
