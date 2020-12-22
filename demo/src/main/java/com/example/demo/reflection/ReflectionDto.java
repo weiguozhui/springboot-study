@@ -39,7 +39,7 @@ public class ReflectionDto {
     // 公开变量
     public String idNumber;
 
-    public ReflectionDto(String name, int age) {
+    private ReflectionDto(String name, int age) {
         this.name = name;
         this.age = age;
     }

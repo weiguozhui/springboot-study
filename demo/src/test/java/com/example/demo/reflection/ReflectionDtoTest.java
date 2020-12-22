@@ -2,7 +2,6 @@ package com.example.demo.reflection;
 
 import jdk.nashorn.internal.runtime.logging.Logger;
 import lombok.Getter;
-import lombok.Setter;
 import org.junit.jupiter.api.Test;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +9,6 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * 测试用例类
@@ -136,9 +134,31 @@ class ReflectionDtoTest {
         for (Constructor<?> declaredConstructor : declaredConstructors) {
             System.out.println(declaredConstructor.getName());
         }
-
-        // 获取指定构造方法,包括私有的
+        // 根据参数类型获取指定构造方法,包括私有的
         Constructor<ReflectionDto> constructor = reflectionDtoClass.getDeclaredConstructor(String.class, int.class);
         System.out.println(constructor.getName());
+    }
+
+    /**
+     * method的方法
+     * @throws NoSuchMethodException
+     */
+    @Test
+    void classMethodTest() throws NoSuchMethodException {
+        Class<ReflectionDto> reflectionDtoClass = ReflectionDto.class;
+
+        Method[] methods = reflectionDtoClass.getMethods();
+        for (Method method : methods) {
+            System.out.println(method.getName());
+        }
+
+        Method[] declaredMethods = reflectionDtoClass.getDeclaredMethods();
+        for (Method declaredMethod : declaredMethods) {
+            System.out.println(declaredMethod.getName());
+        }
+
+        Method getName = reflectionDtoClass.getDeclaredMethod("getName");
+        System.out.println(getName.getName());
+
     }
 }
