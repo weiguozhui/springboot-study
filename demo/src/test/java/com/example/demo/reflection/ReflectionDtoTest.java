@@ -13,28 +13,26 @@ import static org.junit.jupiter.api.Assertions.*;
 class ReflectionDtoTest {
 
     @Test
-    void testClass1() {
+    void fieldMethod() throws NoSuchFieldException {
         // 使用类名.class获取到对象
         Class<ReflectionDto> reflectionDtoClass = ReflectionDto.class;
-        // 获取到全类名
-        System.out.println(reflectionDtoClass.getName());
-        // 获取不带包名的类名
-        System.out.println(reflectionDtoClass.getSimpleName());
-        // 得到的也是不带包名的类名
-        System.out.println(reflectionDtoClass.getCanonicalName());
-        // 用getMethods获取到对象的方法列表
-        Method[] methods = reflectionDtoClass.getMethods();
-        // 遍历出所有的方法名
-        for (int i = 0; i < methods.length; i++) {
-            System.out.println(methods[i].getName());
-        }
-
         // getFields 获取类的成员变量数组,打印出属性名
         // 发现该方法只能获取到public修饰的属性
-        Field[] fields =reflectionDtoClass.getFields();
+        Field[] fields = reflectionDtoClass.getFields();
         for (int i = 0; i < fields.length; i++) {
             System.out.println(fields[i].getName());
         }
+        // 指定属性名称获取变量,也只能获取到公有的属性，无法获取私有和受保护的变量
+        Field field = reflectionDtoClass.getField("idNumber");
+        System.out.println(field.getName());
+        // 可以获取所有包括私有的属性
+        Field name = reflectionDtoClass.getDeclaredField("name");
+        System.out.println(name.getName());
+        Field[] declaredFields = reflectionDtoClass.getDeclaredFields();
+        for (Field declaredField : declaredFields) {
+            System.out.println(declaredField.getName());
+        }
+
     }
 
     /**
@@ -46,7 +44,7 @@ class ReflectionDtoTest {
         Class<?> reflectionDtoClass = ReflectionDto.class;
         System.out.println(reflectionDtoClass.getSimpleName());
         // 获取class对象方法2
-        Class<?> reflectionDtoClass1 =  Class.forName("com.example.demo.reflection.ReflectionDto");
+        Class<?> reflectionDtoClass1 = Class.forName("com.example.demo.reflection.ReflectionDto");
         System.out.println(reflectionDtoClass1.getSimpleName());
         // 获取class对象方法3
         ReflectionDto reflectionDto = new ReflectionDto();
@@ -60,7 +58,7 @@ class ReflectionDtoTest {
     @Test
     void classMethods() throws IllegalAccessException, InstantiationException {
         // 获取Class对象
-        Class<?> reflectionDtoClass=ReflectionDto.class;
+        Class<?> reflectionDtoClass = ReflectionDto.class;
         // 获取包名
         System.out.println(reflectionDtoClass.getPackage());
         System.out.println(reflectionDtoClass.getCanonicalName());
@@ -82,11 +80,11 @@ class ReflectionDtoTest {
             System.out.println(aClass.getSimpleName());
         }
 //         获取父类class
-       Class<?> catClass = Cat.class;
-       Class<?> catSupper = catClass.getSuperclass();
-//       System.out.println(catSupper.getSimpleName());
+        Class<?> catClass = Cat.class;
+        Class<?> catSupper = catClass.getSuperclass();
+        System.out.println(catSupper.getSimpleName());
         // 把catClass类转成代表Animal类的子类
-       System.out.println(catClass.asSubclass(Animal.class).getSimpleName());
+        System.out.println(catClass.asSubclass(Animal.class).getSimpleName());
 
         Class<?> animalClass = Animal.class;
         // 获取当前类所实现的接口,一定是直接实现的，父类实现的无法获取到
