@@ -1,7 +1,12 @@
 package com.example.demo.reflection;
 
+import jdk.nashorn.internal.runtime.logging.Logger;
+import lombok.Getter;
+import lombok.Setter;
 import org.junit.jupiter.api.Test;
+import org.springframework.stereotype.Component;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -11,29 +16,6 @@ import static org.junit.jupiter.api.Assertions.*;
  * 测试用例类
  */
 class ReflectionDtoTest {
-
-    @Test
-    void fieldMethod() throws NoSuchFieldException {
-        // 使用类名.class获取到对象
-        Class<ReflectionDto> reflectionDtoClass = ReflectionDto.class;
-        // getFields 获取类的成员变量数组,打印出属性名
-        // 发现该方法只能获取到public修饰的属性
-        Field[] fields = reflectionDtoClass.getFields();
-        for (int i = 0; i < fields.length; i++) {
-            System.out.println(fields[i].getName());
-        }
-        // 指定属性名称获取变量,也只能获取到公有的属性，无法获取私有和受保护的变量
-        Field field = reflectionDtoClass.getField("idNumber");
-        System.out.println(field.getName());
-        // 可以获取所有包括私有的属性
-        Field name = reflectionDtoClass.getDeclaredField("name");
-        System.out.println(name.getName());
-        Field[] declaredFields = reflectionDtoClass.getDeclaredFields();
-        for (Field declaredField : declaredFields) {
-            System.out.println(declaredField.getName());
-        }
-
-    }
 
     /**
      * 获取类的class对象的方法，class对象也就类的字面量
@@ -92,5 +74,71 @@ class ReflectionDtoTest {
         for (Class<?> anInterface : interfaces) {
             System.out.println(anInterface.getName());
         }
+    }
+
+    /**
+     * 获取注解的方法
+     */
+    @Test
+    void annotation() {
+        Class<Animal> animalClass = Animal.class;
+        // 获取注解，可以判断此类是否有注解，从而做对应的业务处理,但是我获取lombok的setter注解时返回为null是为什么？
+//        看了报提示，说是此注解不可用于反射访问？
+        Logger setter = animalClass.getAnnotation(Logger.class);
+        System.out.println(setter);
+        Component component = animalClass.getAnnotation(Component.class);
+        System.out.println(component);
+        Getter getter = animalClass.getAnnotation(Getter.class);
+        System.out.println(getter);
+    }
+
+    /**
+     * class 的field方法的使用
+     *
+     * @throws NoSuchFieldException
+     */
+    @Test
+    void fieldMethod() throws NoSuchFieldException {
+        // 使用类名.class获取到对象
+        Class<ReflectionDto> reflectionDtoClass = ReflectionDto.class;
+        // getFields 获取类的成员变量数组,打印出属性名
+        // 发现该方法只能获取到public修饰的属性
+        Field[] fields = reflectionDtoClass.getFields();
+        for (int i = 0; i < fields.length; i++) {
+            System.out.println(fields[i].getName());
+        }
+        // 指定属性名称获取变量,也只能获取到公有的属性，无法获取私有和受保护的变量
+        Field field = reflectionDtoClass.getField("idNumber");
+        System.out.println(field.getName());
+        // 可以获取所有包括私有的属性
+        Field name = reflectionDtoClass.getDeclaredField("name");
+        System.out.println(name.getName());
+        Field[] declaredFields = reflectionDtoClass.getDeclaredFields();
+        for (Field declaredField : declaredFields) {
+            System.out.println(declaredField.getName());
+        }
+
+    }
+
+    /**
+     * 构造方法的获取
+     */
+    @Test
+    void classConstructorMethod() throws NoSuchMethodException {
+        Class<ReflectionDto> reflectionDtoClass = ReflectionDto.class;
+        // 获取构造方法集合,只能获取公共的构造方法
+        Constructor<?>[] constructors = reflectionDtoClass.getConstructors();
+        for (Constructor<?> constructor : constructors) {
+            System.out.println(constructor.getName());
+        }
+        // 获取构造方法集合,包括私有
+        Constructor<?>[] declaredConstructors = reflectionDtoClass.getDeclaredConstructors();
+        for (Constructor<?> declaredConstructor : declaredConstructors) {
+            System.out.println(declaredConstructor.getName());
+        }
+
+        // 获取指定构造方法,包括私有的
+        Constructor<ReflectionDto> constructor = reflectionDtoClass.getDeclaredConstructor(String.class, int.class);
+        System.out.println(constructor.getName());
     }
 }
