@@ -5,3 +5,4 @@
   框架: 半成品的应用程序 spring、spring-boot等
   反射:
   好处: 在程序运行过程中去操作对象、字节码文件;提高扩展性，复用性、解耦
+  反射操作 : 详细见测试用例com.example.demo.reflection.ReflectionDtoTest
