@@ -141,6 +141,7 @@ class ReflectionDtoTest {
 
     /**
      * method的方法
+     *
      * @throws NoSuchMethodException
      */
     @Test
@@ -160,5 +161,43 @@ class ReflectionDtoTest {
         Method getName = reflectionDtoClass.getDeclaredMethod("getName");
         System.out.println(getName.getName());
 
+    }
+
+    @Test
+    void classOtherMethod() {
+        Class<ReflectionDto> reflectionDtoClass = ReflectionDto.class;
+        // 是否是注解
+        reflectionDtoClass.isAnnotation();
+        // 是否是数组
+        reflectionDtoClass.isArray();
+        // 是否是枚举
+        reflectionDtoClass.isEnum();
+        // 是否是结口
+        reflectionDtoClass.isInterface();
+        // 是否是某个类的实例
+        System.out.println(
+                reflectionDtoClass.isInstance(ReflectionDto.class)
+        );
+    }
+
+    /**
+     * field对象的操作方法
+     */
+    @Test
+    void fieldMethodOperation() throws NoSuchFieldException, IllegalAccessException, InstantiationException {
+        // 获取class对象
+        Class<ReflectionDto> reflectionDtoClass = ReflectionDto.class;
+        // 创建一个实例
+        ReflectionDto reflectionDto = reflectionDtoClass.newInstance();
+        // 获取属性
+        Field field = reflectionDtoClass.getDeclaredField("name");
+        // 使用反射修改属性值之前
+        System.out.println(reflectionDto);
+        // 暴力反射
+        field.setAccessible(true);
+        // 使用反射设置对象的值
+        field.set(reflectionDto,"张三");
+        // 反射修改对象属性值之后
+        System.out.println(reflectionDto);
     }
 }
