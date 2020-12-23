@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 
@@ -184,7 +185,7 @@ class ReflectionDtoTest {
      * field对象的操作方法
      */
     @Test
-    void fieldMethodOperation() throws NoSuchFieldException, IllegalAccessException, InstantiationException {
+    void fieldMethodOperation() throws NoSuchFieldException, IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
         // 获取class对象
         Class<ReflectionDto> reflectionDtoClass = ReflectionDto.class;
         // 创建一个实例
@@ -199,5 +200,10 @@ class ReflectionDtoTest {
         field.set(reflectionDto,"张三");
         // 反射修改对象属性值之后
         System.out.println(reflectionDto);
+
+        Method getName = reflectionDtoClass.getDeclaredMethod("getName");
+        Object invoke = getName.invoke(reflectionDto);
+        System.out.println(invoke);
     }
+
 }
