@@ -32,7 +32,7 @@ spring-boot的启动方式
  其他的后续慢慢补上
 
  @configuration和@Bean的使用
-     使用@configuration定义这个类为配置类,相当于以前的xml文件配置，定义该类为配置类 
+     使用@configuration定义这个类为配置类,相当于以前的xml文件配置，定义该类为配置类
      相对于以前的xml的bean装配，将对象放到springboot的容器中，这样做的好处个人认为是更加的面向对象了，同时减少配置文件
      可以不指定name属性，则根据类型注入，指定name属性，可以使用@resource注解指定获取指定的name，name属性相当于xml配置的bean的id
      @Bean(name = "userBean")
@@ -41,7 +41,7 @@ spring的配置文件
     配置文件在src/main/resources/application.properties
     可支持yaml文件格式，推荐使用yaml文件格式。
     在配置文件中可以自定义和修改各种参数，如tomcat端口号，项目路径等
-spring boot多环境配置
+========================spring boot多环境配置===========================
     spring boot 启动时默认只会去加载application.xml文件
     可以配置多个配置文件方法：
     1.在application.yaml中添加配置项
@@ -58,6 +58,13 @@ spring boot多环境配置
     mvn spring-boot:run --spring.profiles.active='test'
     jar启动方法（得把jar包单独拿出来运行，不然还是读的默认文件）
     jar -jar xxx.jar --spring.profiles.active='test'
+    ===============spring boot 配置文件（application.yaml、application.properties）的加载顺序============
+    -file：config/
+    -file:/
+    classpath:config/
+    classpath:/
+    优先级从上到下，优先级高的会覆盖优先级低的如各个路径都存在application配置文件时-file：config/会覆盖其他的配置文件
+
 
 引入自定义配置项======================
 =================在application.yaml中添加了自定义配置项=================
