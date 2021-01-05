@@ -1,0 +1,4 @@
+myYaml:
+  name: myYaml
+  age: 29
+  flag: true

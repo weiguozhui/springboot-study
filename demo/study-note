@@ -59,9 +59,8 @@ spring boot多环境配置
     jar启动方法（得把jar包单独拿出来运行，不然还是读的默认文件）
     jar -jar xxx.jar --spring.profiles.active='test'
 
-引入自定义配置项
-
-    在application.yaml中添加了自定义配置项
+引入自定义配置项======================
+=================在application.yaml中添加了自定义配置项=================
     myproperties:
       aaa: aaa
       bbb: bbb
@@ -130,9 +129,22 @@ spring boot多环境配置
     @URL(protocol=,host=, port=,regexp=, flags=)
     校验不过会抛出异常
     可以通过捕获异常来获取到错误信息
-
-
-  lombok插件的使用
+======================spring-boot 引用外部自定义配置文件=================
+    1.自定义配置文件
+    resources\myproperties\my.yaml
+    2.编写配置文件内容
+    myYaml:
+      name: myYaml
+      age: 29
+      flag: true
+    3.编写实体类，并设置getter和setter方法
+    com.example.demo.properties.MyYaml
+    4.在启动类引入配置文件
+    @ImportResource(locations = "classpath:*myproperties/my.yaml")
+    发现报错了，原因是只能引入xml文件啊！
+    @ImportResource只能引入xml文件
+    springboot不支持加载yml文件。需要自己写程序去加载。
+=====================lombok插件的使用==================================
   使用lombok插件，可以使用注解方式，实现对javabean的封装
   直接在pom文件中引入lombok的依赖包，然后使用注解即可
     // getter 方法

@@ -3,6 +3,7 @@ package com.example.demo;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * 3.mvn命令启动 mvn spring-boot:run
  */
 // 定义该类为启动类
+//@ImportResource(locations="classpath:myproperties/my.yaml")
 @SpringBootApplication
 // 定义扫描mapper的注解，是mybaties的注解
 @MapperScan(basePackages = "com.example.demo.mapper")
