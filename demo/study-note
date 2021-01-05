@@ -32,8 +32,8 @@ spring-boot的启动方式
  其他的后续慢慢补上
 
  @configuration和@Bean的使用
-     使用@configuration定义这个类为配置类,相当于以前的xml文件配置，定义该类为配置类
-     相对于以前的xml的bean装配，将对象放到springboot的容器中，这样做的好处个人认为是更加的面向对象了
+     使用@configuration定义这个类为配置类,相当于以前的xml文件配置，定义该类为配置类 
+     相对于以前的xml的bean装配，将对象放到springboot的容器中，这样做的好处个人认为是更加的面向对象了，同时减少配置文件
      可以不指定name属性，则根据类型注入，指定name属性，可以使用@resource注解指定获取指定的name，name属性相当于xml配置的bean的id
      @Bean(name = "userBean")
 

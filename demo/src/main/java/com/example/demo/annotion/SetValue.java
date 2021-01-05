@@ -1,7 +1,5 @@
 package com.example.demo.annotion;
 
-import com.sun.deploy.net.proxy.WDefaultBrowserProxyConfig;
-
 import java.lang.annotation.*;
 
 /**
