@@ -86,7 +86,8 @@ spring的配置文件
     优先级从上到1到11，如果存在相同配置，高优先级覆盖低优先级，配置不同则整合。
     1.启动时使用命令行方式进行修改。
         java -jar xx.jar --配置项=value
-        如java -jar xxx.jar --server.port=8090
+        如java -jar xxx.jar --server.port=8090 --server.servlet.context-path=/dome
+        多个参数用空格分开
      2.来自java:comp/env的JNDI属性
      3，java系统属性
      4.操作系统环境变量
@@ -96,8 +97,14 @@ spring的配置文件
      7.jar包内部的application-{profile}.properties或yaml
      8.jar包内application.properties或yaml
      9.jar包外的application.properties或yaml
+     在jar包同级目录声明application.properties或yaml文件，直接启动，外部配置文件生效
      10.@Configuration注解上的@PropertySource
      11.通过SpringApplication.setDefaultProperties指定的默认属性
+
+     参考官方文档
+     https://docs.spring.io/spring-boot/docs/2.5.0-SNAPSHOT/reference/html/spring-boot-features.html#boot-features-external-config
+     2. Externalized Configuration
+     
 
 引入自定义配置项======================
 =================在application.yaml中添加了自定义配置项=================
