@@ -64,7 +64,40 @@ spring的配置文件
     classpath:config/
     classpath:/
     优先级从上到下，优先级高的会覆盖优先级低的如各个路径都存在application配置文件时-file：config/会覆盖其他的配置文件
-
+======================spring-boot 引用外部自定义配置文件=================
+    1.自定义配置文件
+    resources\myproperties\my.yaml
+    2.编写配置文件内容
+    myYaml:
+      name: myYaml
+      age: 29
+      flag: true
+    3.编写实体类，并设置getter和setter方法
+    com.example.demo.properties.MyYaml
+    4.在启动类引入配置文件
+    @ImportResource(locations = "classpath:*myproperties/my.yaml")
+    发现报错了，原因是只能引入xml文件啊！
+    @ImportResource只能引入xml文件
+    springboot不支持加载yml文件。需要自己写程序去加载。
+    springboot不推荐使用ImportResource来引入spring的配置文件，而是推荐使用@configuration和@Bean的使用来定义bean对象
+==============spring boot引入外部配置=============
+    springboot打成war包部署之后要修改配置项，如端口、连接等时，如果是修改进入jar修改替换文件那就是很麻烦的事情，
+    为此，springboot提供了可不用更改源代码就可以修改配置项的方式。
+    优先级从上到1到11，如果存在相同配置，高优先级覆盖低优先级，配置不同则整合。
+    1.启动时使用命令行方式进行修改。
+        java -jar xx.jar --配置项=value
+        如java -jar xxx.jar --server.port=8090
+     2.来自java:comp/env的JNDI属性
+     3，java系统属性
+     4.操作系统环境变量
+     5.RandomValuePropertySource配置的random.*属性
+     ==========优先加载带profile的，加载顺序由外到内进行寻找==========
+     6.jar包外的application-{profile}.properties或yaml
+     7.jar包内部的application-{profile}.properties或yaml
+     8.jar包内application.properties或yaml
+     9.jar包外的application.properties或yaml
+     10.@Configuration注解上的@PropertySource
+     11.通过SpringApplication.setDefaultProperties指定的默认属性
 
 引入自定义配置项======================
 =================在application.yaml中添加了自定义配置项=================
@@ -136,21 +169,7 @@ spring的配置文件
     @URL(protocol=,host=, port=,regexp=, flags=)
     校验不过会抛出异常
     可以通过捕获异常来获取到错误信息
-======================spring-boot 引用外部自定义配置文件=================
-    1.自定义配置文件
-    resources\myproperties\my.yaml
-    2.编写配置文件内容
-    myYaml:
-      name: myYaml
-      age: 29
-      flag: true
-    3.编写实体类，并设置getter和setter方法
-    com.example.demo.properties.MyYaml
-    4.在启动类引入配置文件
-    @ImportResource(locations = "classpath:*myproperties/my.yaml")
-    发现报错了，原因是只能引入xml文件啊！
-    @ImportResource只能引入xml文件
-    springboot不支持加载yml文件。需要自己写程序去加载。
+
 =====================lombok插件的使用==================================
   使用lombok插件，可以使用注解方式，实现对javabean的封装
   直接在pom文件中引入lombok的依赖包，然后使用注解即可
