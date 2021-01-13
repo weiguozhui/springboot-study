@@ -357,6 +357,10 @@ slf4j的使用
 slf4j提供了替换包，将他们的抽象指向slf4j，这样可以完美融合。每个日志框架都有slf4j的替换包。
 详细见官网http://www.slf4j.org/legacy.html
 
+spring boot 底层也是slf4j+logback方式实现日志记录
+==========所以引入其他框架时要排查掉它的日志jar包，否则会jar包冲突=============
+所以spring boot使用slf4j+logback根本不需要任何东西,就是加个配置文件就好了，直接使用，不需要引入jar包
+
 
 
 
