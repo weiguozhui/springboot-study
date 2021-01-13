@@ -104,7 +104,7 @@ spring的配置文件
      参考官方文档
      https://docs.spring.io/spring-boot/docs/2.5.0-SNAPSHOT/reference/html/spring-boot-features.html#boot-features-external-config
      2. Externalized Configuration
-     
+
 
 引入自定义配置项======================
 =================在application.yaml中添加了自定义配置项=================
@@ -305,7 +305,57 @@ springboot整合jsp页面
 关于微服务
     将功能打散，一个功能或相关的功能作为一个服务单独部署。
     解耦
+==============spring boot自动配置的原理=============
+spring boot的官方文档
+可配置些什么？
+https://docs.spring.io/spring-boot/docs/2.5.0-SNAPSHOT/reference/html/appendix-application-properties.html#common-application-properties-server
+自动配置原理
+1，spring boot 启动的时候加载主配置类，开启自动配置功能--@EnableAutoConfiguration
 
+spring boot整合日志
+日志框架
+jcj
+slf4j---------log4j，log4j2，jcl-jdk自带，logback
+jboss-logging---特点的框架使用
+
+选择
+    日志门面--slf4j
+    日志框架--logback
+slf4j的使用
+使用日志框架的时候，不应该直接调用实现类，而应该调用抽象方法。
+1.导入slf4j的jar包和logback的jar包
+        <!-- slf4j 框架包-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <!-- 使用logback需要的两个包 -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+  参考资料
+    官网http://www.slf4j.org/manual.html
+    应用实例
+    import org.slf4j.Logger;
+    import org.slf4j.LoggerFactory;
+
+    public class HelloWorld {
+      public static void main(String[] args) {
+        Logger logger = LoggerFactory.getLogger(HelloWorld.class);
+        logger.info("Hello World");
+      }
+    }
+2.映入logback的配置文件
+
+遗留问题，
+因为前面的框架使用的是其他的日志框架，想换成slf4j+logback，那怎么做呢？
+slf4j提供了替换包，将他们的抽象指向slf4j，这样可以完美融合。每个日志框架都有slf4j的替换包。
+详细见官网http://www.slf4j.org/legacy.html
 
 
 
