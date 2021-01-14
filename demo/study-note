@@ -360,6 +360,23 @@ slf4j提供了替换包，将他们的抽象指向slf4j，这样可以完美融�
 spring boot 底层也是slf4j+logback方式实现日志记录
 ==========所以引入其他框架时要排查掉它的日志jar包，否则会jar包冲突=============
 所以spring boot使用slf4j+logback根本不需要任何东西,就是加个配置文件就好了，直接使用，不需要引入jar包
+在spring boot的配置文件修改logback的配置自定义
+logging:
+  file:
+    path: /
+    name: demo.log
+    level: #这个可能是错的
+      com:
+        example:
+          demo: error
+#  level: root级别的日志级别
+#    root: warn
+2.自定义logback配置文件。
+很多时候，spring提供的默认配置并不能满足我们的需求，也不方便我们修改和管理，可以使用自定义logback配置文件，参考网站
+https://docs.spring.io/spring-boot/docs/2.5.0-SNAPSHOT/reference/html/spring-boot-features.html#boot-features-logging
+
+
+
 
 
 

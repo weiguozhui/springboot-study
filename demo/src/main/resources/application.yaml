@@ -44,5 +44,5 @@ logging:
       com:
         example:
           demo: error
-      org:
-        springframework: error
+#  level: root级别的日志级别
+#    root: warn

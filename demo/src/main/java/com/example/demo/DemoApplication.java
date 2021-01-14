@@ -26,5 +26,9 @@ public class DemoApplication {
 	public static void main(String[] args) {
 		logger.error("===============logback============");
 		SpringApplication.run(DemoApplication.class, args);
+		logger.error("===============logback============");
+		logger.info("===============logback============");
+		logger.warn("===============logback============");
+		logger.debug("===============logback============");
 	}
 }
