@@ -374,7 +374,10 @@ logging:
 2.自定义logback配置文件。
 很多时候，spring提供的默认配置并不能满足我们的需求，也不方便我们修改和管理，可以使用自定义logback配置文件，参考网站
 https://docs.spring.io/spring-boot/docs/2.5.0-SNAPSHOT/reference/html/spring-boot-features.html#boot-features-logging
-
+整合方式：直接在resources目录下新建logback.xml文件或yaml文件即可
+具体配置项和配置方法参考官网
+http://logback.qos.ch/manual/configuration.html
+后续再对其他配置项做补充
 
 
 

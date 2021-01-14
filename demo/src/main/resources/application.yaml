@@ -36,13 +36,13 @@ mybatis:
   configuration:
     # 开启驼峰映射
     map-underscore-to-camel-case: true
-logging:
-  file:
-    path: /
-    name: demo.log
-    level:
-      com:
-        example:
-          demo: error
+#logging:
+#  file:
+#    path: /
+#    name: demo.log
+#    level:
+#      com:
+#        example:
+#          demo: error
 #  level: root级别的日志级别
 #    root: warn
