@@ -7,3 +7,16 @@
 这个场景spring boot帮我们配置了什么？能不能修改？能修改哪些配置？能不能扩展？
 
 使用spring的工自动初始化器
+
+spring   boot静态映射规则
+1.以jar包的方式引入静态资源
+MVC的自动配置类是WebMvcAutoConfiguration，spring会去"classpath:/META-INF/resources/webjars/目录下寻找静态资源文件
+需要引入如js和jquery等框架时，只需要引入对应的jar包即可。
+<dependency>
+    <groupId>org.webjars</groupId>
+    <artifactId>jquery</artifactId>
+    <version>3.5.1</version>
+</dependency>
+访问以下路径即可访问到静态资源了
+/spring-dome/webjars/jquery/3.5.1/jquery.js
+百度搜索webjars即可，网址:https://www.webjars.org/
