@@ -20,3 +20,16 @@ MVC的自动配置类是WebMvcAutoConfiguration，spring会去"classpath:/META-I
 访问以下路径即可访问到静态资源了
 /spring-dome/webjars/jquery/3.5.1/jquery.js
 百度搜索webjars即可，网址:https://www.webjars.org/
+静态资源文件的访问顺序
+    classpath:/META-INF/resources/
+    classpath:/resources/
+    classpath:/static
+    classpath:/public/
+    /
+
+resources下静态资源文件的访问规则
+访问时不需要加static
+3.5.1\jquery\jquery.js
+
+欢迎页访问路径，就是寻找静态资源文件路径下的index.html
+
