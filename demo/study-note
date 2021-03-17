@@ -381,8 +381,19 @@ http://logback.qos.ch/manual/configuration.html
 直接使用logback.xml日志框架会直接绕过springboot加载，如果是使用logback-spring.xml则由springboot来加载，可以使用springboot提供的一些高级功能
 
 
-
-
+学习要求
+spring boot
+spring cloud
+redis
+mysql
+zookeeper
+kafka
+ElasticSearch
+mybaties
+rabbitMq
+rocketMq
+ehcache缓存
+设计模式
 
 
 
