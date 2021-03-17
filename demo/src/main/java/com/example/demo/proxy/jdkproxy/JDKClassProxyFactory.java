@@ -16,5 +16,6 @@ public class JDKClassProxyFactory implements JDKClass{
         System.out.println("before say hello");
         jdkClass.proxyMethod();
         System.out.println("after say hello");
+
     }
 }
