@@ -18,4 +18,17 @@ class ShareFactoryTest {
         rectangle.draw();
         square.draw();
     }
+
+    @Test
+    void testMethod(){
+        String productCode = "21010001";
+
+        String busiType = productCode.substring(2,5);
+        String transType = productCode.substring(5,productCode.length());
+        String draftAtrr = productCode.substring(0,1);
+
+        System.out.println("busiType: "+busiType);
+        System.out.println("transType: "+transType);
+        System.out.println("draftAtrr: "+draftAtrr);
+    }
 }
